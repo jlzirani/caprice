@@ -1,4 +1,5 @@
 import pwd
+from caprice.core.logging import log
 
 
 def _user_exists(name):
@@ -14,5 +15,9 @@ def _create_user(name):
 
 
 def user(name):
+    log.question("check if user '%s' exists" % name)
     if not _user_exists(name):
+        log.action("user doesn't exists, create it")
         _create_user(name)
+    else:
+        log.ok("user exists, continue")
