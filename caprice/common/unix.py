@@ -4,6 +4,7 @@ import pwd
 def _user_exists(name):
     try:
         pwd.getpwnam(name)
+        return True
     except KeyError:
         return False
 
